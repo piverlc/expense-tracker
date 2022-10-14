@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/joy": "^5.0.0-alpha.49",
+    "@reduxjs/toolkit": "^1.8.6",
     "@types/uuid": "^8.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

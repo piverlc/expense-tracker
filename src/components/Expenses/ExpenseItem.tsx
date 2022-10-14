@@ -1,5 +1,5 @@
 import { FC, Fragment } from "react";
-import Card from "../UI/Card";
+import Card from "../../common/layout/Card";
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 

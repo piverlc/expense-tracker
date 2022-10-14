@@ -1,7 +1,7 @@
 import { FC, Fragment, useState } from "react";
+import Card from "../../common/layout/Card";
 import { IExpenses } from "../../types";
 import ExpensesFilter from "../NewExpense/ExpensesFilter";
-import Card from "../UI/Card";
 import "./Expenses.css";
 import ExpensesChart from "./ExpensesChart";
 import ExpensesList from "./ExpensesList";

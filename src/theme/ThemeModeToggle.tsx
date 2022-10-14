@@ -1,7 +1,7 @@
 import Button from "@mui/joy/Button";
 import { useColorScheme } from "@mui/joy/styles";
 
-export const ModeToggle = () => {
+export const ThemeModeToggle = () => {
   const { mode, setMode } = useColorScheme();
   return (
     <Button

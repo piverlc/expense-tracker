@@ -4,7 +4,7 @@ import { Fragment, useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import { INITIAL_EXPENSES } from "./data/INITIAL_EXPENSES";
-import { ModeToggle } from "./theme";
+import { ThemeModeToggle } from "./theme/ThemeModeToggle";
 import { IExpenses } from "./types";
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
     <Fragment>
       <CssVarsProvider>
         <Sheet>
-          <ModeToggle />
+          <ThemeModeToggle />
         </Sheet>
         <NewExpense onAddExpense={addExpenseHandler} />
         <Expenses items={expenses} />

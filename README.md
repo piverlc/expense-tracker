@@ -6,7 +6,7 @@ In the project directory, you can run:
 ### `npm run dev`
 
 Runs the app in the development mode.\
-Open [Local:](http://000.0.0.0:0000) your local dev IP to view it in your browser.
+Open Local:[http://000.0.0.0:0000](http://000.0.0.0:0000) your local dev IP to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.

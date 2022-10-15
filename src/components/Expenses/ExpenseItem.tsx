@@ -6,7 +6,7 @@ import "./ExpenseItem.css";
 type ExpenseItemProps = {
   name: string;
   amount: number;
-  date: Date;
+  date: string;
 };
 
 const ExpenseItem: FC<ExpenseItemProps> = ({ name, amount, date }) => {

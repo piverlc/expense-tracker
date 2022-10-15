@@ -1,15 +1,15 @@
 import Box from "@mui/joy/Box";
 import { FC, Fragment, useState } from "react";
-import { IExpenses } from "../../types";
+import { ExpensesDataTypeI } from "../../types";
 import ExpenseForm from "./ExpenseForm";
 import NewExpenseButton from "./NewExpenseButton";
 
-type NewExpenseProps = { onAddExpense: (expense: IExpenses) => void };
+type NewExpenseProps = { onAddExpense: (expense: ExpensesDataTypeI) => void };
 
 const NewExpense: FC<NewExpenseProps> = ({ onAddExpense }) => {
   const [isEditing, setIsEditing] = useState(false);
 
-  const saveExpenseDataHandler = (enteredExpenseData: IExpenses) => {
+  const saveExpenseDataHandler = (enteredExpenseData: ExpensesDataTypeI) => {
     const expenseData = {
       ...enteredExpenseData,
     };

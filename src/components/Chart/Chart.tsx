@@ -1,4 +1,4 @@
-import * as React from "react";
+import { FC, Fragment } from "react";
 import "./Chart.css";
 import ChartBar from "./ChartBar";
 
@@ -9,11 +9,11 @@ type ChartProps = {
   }[];
 };
 
-const Chart = ({ dataPoints }: ChartProps) => {
+const Chart: FC<ChartProps> = ({ dataPoints }) => {
   const dataPointValues = dataPoints.map((dataPoint) => dataPoint.value);
   const maximumValue = Math.max(...dataPointValues);
   return (
-    <React.Fragment>
+    <Fragment>
       <div className="chart">
         {dataPoints.map((dataPoint) => (
           <ChartBar
@@ -24,7 +24,7 @@ const Chart = ({ dataPoints }: ChartProps) => {
           />
         ))}
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

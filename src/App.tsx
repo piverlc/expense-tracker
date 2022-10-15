@@ -1,19 +1,30 @@
 import Sheet from "@mui/joy/Sheet";
 import { CssVarsProvider } from "@mui/joy/styles";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
+import { ThemeModeToggle } from "./common/theme/ThemeModeToggle";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-import { INITIAL_EXPENSES } from "./data/INITIAL_EXPENSES";
-import { ThemeModeToggle } from "./theme/ThemeModeToggle";
-import { IExpenses } from "./types";
+import { useAppDispatch, useAppSelector } from "./redux/app/hooks";
+import {
+  selectExpenses,
+  setExpenses,
+} from "./redux/features/expenses/expensesSlice";
+import { ExpensesDataTypeI } from "./types";
 
 const App = () => {
-  const [expenses, setExpenses] = useState<IExpenses[]>(INITIAL_EXPENSES);
+  // const [expenses, setExpenses] =
+  //   useState<ExpensesDataTypeI[]>(INITIAL_EXPENSES);
 
-  const addExpenseHandler = (expense: IExpenses) => {
-    setExpenses((pervExpenses) => {
-      return [expense, ...pervExpenses];
-    });
+  const exp = useAppSelector(selectExpenses);
+  const dispatch = useAppDispatch();
+
+  console.log("from store...", exp);
+  const addExpenseHandler = (expense: ExpensesDataTypeI) => {
+    // setExpenses((pervExpenses) => {
+    //   return [expense, ...pervExpenses];
+    // });
+    dispatch(setExpenses(expense));
+
     console.log("In App.js");
     console.log(expense);
   };
@@ -24,7 +35,7 @@ const App = () => {
           <ThemeModeToggle />
         </Sheet>
         <NewExpense onAddExpense={addExpenseHandler} />
-        <Expenses items={expenses} />
+        <Expenses items={exp} />
       </CssVarsProvider>
     </Fragment>
   );

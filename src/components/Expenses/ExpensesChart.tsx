@@ -1,8 +1,9 @@
+import format from "date-fns/format";
 import { FC, Fragment } from "react";
-import { IExpenses } from "../../types";
+import { ExpensesDataTypeI } from "../../types";
 import Chart from "../Chart/Chart";
 
-type ExpensesChartProps = { expenses: IExpenses[] };
+type ExpensesChartProps = { expenses: ExpensesDataTypeI[] };
 
 const ExpensesChart: FC<ExpensesChartProps> = ({ expenses }) => {
   const chartDataPoints = [
@@ -21,9 +22,10 @@ const ExpensesChart: FC<ExpensesChartProps> = ({ expenses }) => {
   ];
 
   for (const expense of expenses) {
-    const expenseMonth = expense.date.getMonth(); // starting at 0 => January => 0
-    chartDataPoints[expenseMonth].value += expense.amount;
+    const expenseMonth = format(new Date(expense.date), "M");
+    chartDataPoints[+expenseMonth - 1].value += expense.amount; // index starting at 0 => -1 to match value returned by format
   }
+
   return (
     <Fragment>
       <Chart dataPoints={chartDataPoints} />

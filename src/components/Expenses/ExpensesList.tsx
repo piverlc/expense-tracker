@@ -1,9 +1,9 @@
 import { FC, Fragment } from "react";
-import { IExpenses } from "../../types";
+import { ExpensesDataTypeI } from "../../types";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpensesList.css";
 
-type ExpensesListProps = { items: IExpenses[] };
+type ExpensesListProps = { items: ExpensesDataTypeI[] };
 
 const ExpensesList: FC<ExpensesListProps> = ({ items }) => {
   if (items.length === 0) {

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { FC, Fragment } from "react";
 import "./ChartBar.css";
 
 type ChartBarProps = {
@@ -7,21 +7,21 @@ type ChartBarProps = {
   label: string;
 };
 
-const ChartBar = ({ maxValue, label, value }: ChartBarProps) => {
+const ChartBar: FC<ChartBarProps> = ({ maxValue, label, value }) => {
   let barFilled = "0%";
 
   if (maxValue > 0) {
     barFilled = Math.round((value / maxValue) * 100) + "%";
   }
   return (
-    <React.Fragment>
+    <Fragment>
       <div className="chart-bar">
         <div className="chart-bar__inner">
           <div className="chart-bar__fill" style={{ height: barFilled }}></div>
         </div>
         <div className="chart-bar__label">{label}</div>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 };
 

@@ -1,12 +1,13 @@
+import { format } from "date-fns";
 import { FC, Fragment, useState } from "react";
 import Card from "../../common/layout/Card";
-import { IExpenses } from "../../types";
+import { ExpensesDataTypeI } from "../../types";
 import ExpensesFilter from "../NewExpense/ExpensesFilter";
 import "./Expenses.css";
 import ExpensesChart from "./ExpensesChart";
 import ExpensesList from "./ExpensesList";
 
-type ExpensesProps = { items: IExpenses[] };
+type ExpensesProps = { items: ExpensesDataTypeI[] };
 
 const Expenses: FC<ExpensesProps> = ({ items }) => {
   const [filteredYear, setFilteredYear] = useState("All");
@@ -19,7 +20,7 @@ const Expenses: FC<ExpensesProps> = ({ items }) => {
     if (filteredYear === "All") {
       return expense;
     }
-    return expense.date.getFullYear().toString() === filteredYear;
+    return format(new Date(expense.date), "Y") === filteredYear;
   });
 
   return (

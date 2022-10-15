@@ -1,25 +1,31 @@
 import Box from "@mui/joy/Box";
 import TextField from "@mui/joy/TextField";
+import { format } from "date-fns/esm";
 import { FC, Fragment } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
-import { IExpenses } from "../../types";
+import { ExpensesDataTypeI } from "../../types";
 import NewExpenseButton from "./NewExpenseButton";
 
 type ExpenseFormProps = {
-  onSaveExpenseData: (enteredExpenseData: IExpenses) => void;
+  onSaveExpenseData: (enteredExpenseData: ExpensesDataTypeI) => void;
   onCancel: () => void;
 };
 
 const ExpenseForm: FC<ExpenseFormProps> = ({ onCancel, onSaveExpenseData }) => {
-  const { register, handleSubmit } = useForm<IExpenses>();
+  const { register, handleSubmit } = useForm<ExpensesDataTypeI>();
 
-  const submitHandler: SubmitHandler<IExpenses> = (data: IExpenses) => {
+  const submitHandler: SubmitHandler<ExpensesDataTypeI> = (
+    data: ExpensesDataTypeI
+  ) => {
+    const id = uuidv4();
+    const date = format(new Date(data.date), "yyyy-mm-dd");
+    const { title, amount } = data;
     const expenseData = {
-      id: uuidv4(),
-      title: data.title,
-      amount: data.amount,
-      date: new Date(data.date),
+      id,
+      title,
+      amount,
+      date,
     };
     onSaveExpenseData(expenseData);
   };

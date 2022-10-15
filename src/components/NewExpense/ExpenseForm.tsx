@@ -19,7 +19,7 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ onCancel, onSaveExpenseData }) => {
     data: ExpensesDataTypeI
   ) => {
     const id = uuidv4();
-    const date = format(new Date(data.date), "yyyy-mm-dd");
+    const date = format(new Date(data.date), "yyyy-MM-dd");
     const { title, amount } = data;
     const expenseData = {
       id,

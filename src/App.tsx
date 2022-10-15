@@ -12,22 +12,13 @@ import {
 import { ExpensesDataTypeI } from "./types";
 
 const App = () => {
-  // const [expenses, setExpenses] =
-  //   useState<ExpensesDataTypeI[]>(INITIAL_EXPENSES);
-
-  const exp = useAppSelector(selectExpenses);
+  const expenses = useAppSelector(selectExpenses);
   const dispatch = useAppDispatch();
 
-  console.log("from store...", exp);
   const addExpenseHandler = (expense: ExpensesDataTypeI) => {
-    // setExpenses((pervExpenses) => {
-    //   return [expense, ...pervExpenses];
-    // });
     dispatch(setExpenses(expense));
-
-    console.log("In App.js");
-    console.log(expense);
   };
+
   return (
     <Fragment>
       <CssVarsProvider>
@@ -35,7 +26,7 @@ const App = () => {
           <ThemeModeToggle />
         </Sheet>
         <NewExpense onAddExpense={addExpenseHandler} />
-        <Expenses items={exp} />
+        <Expenses items={expenses} />
       </CssVarsProvider>
     </Fragment>
   );

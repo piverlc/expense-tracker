@@ -6,11 +6,13 @@ import "./ExpensesList.css";
 type ExpensesListProps = { items: ExpensesDataTypeI[] };
 
 const ExpensesList: FC<ExpensesListProps> = ({ items }) => {
-  if (items.length === 0) {
-    return <h2 className="expenses-list__fallback">Found no expenses.</h2>;
-  }
   return (
     <Fragment>
+      <br />
+      {items.length === 0 && (
+        <h2 className="expenses-list__fallback">Found no expenses.</h2>
+      )}
+      <br />
       <ul className="expenses-list">
         {items.map((expense) => (
           <ExpenseItem

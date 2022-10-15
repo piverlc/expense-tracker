@@ -14,17 +14,14 @@ const ExpenseDate: FC<ExpenseDateProps> = ({ date }) => {
   useEffect(() => {
     if (!!month) {
       const formattedMonth = format(new Date(date), "MMMM");
-      console.log("MM>>>>", formattedMonth);
       setMonth(formattedMonth);
     }
     if (!!year) {
       const formattedYear = format(new Date(date), "Y");
-      console.log("YYYY>>>>", formattedYear);
       setYear(formattedYear);
     }
     if (!!day) {
       const formattedDay = format(new Date(date), "d");
-      console.log("D>>>>", formattedDay);
       setDay(formattedDay);
     }
   }, []);

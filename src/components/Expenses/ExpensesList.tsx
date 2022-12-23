@@ -1,3 +1,4 @@
+import Typography from "@mui/joy/Typography";
 import { FC, Fragment } from "react";
 import { ExpensesDataTypeI } from "../../types";
 import ExpenseItem from "./ExpenseItem";
@@ -10,7 +11,13 @@ const ExpensesList: FC<ExpensesListProps> = ({ items }) => {
     <Fragment>
       <br />
       {items.length === 0 && (
-        <h2 className="expenses-list__fallback">Found no expenses.</h2>
+        <Typography
+          className="expenses-list__fallback"
+          level="h2"
+          component="h2"
+        >
+          Found no expenses.
+        </Typography>
       )}
       <br />
       <ul className="expenses-list">

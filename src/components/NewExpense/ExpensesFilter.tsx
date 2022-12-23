@@ -36,6 +36,7 @@ const ExpensesFilter: FC<ExpensesFilterProps> = ({
             marginBottom: "0.5rem",
           }}
           level="h4"
+          component="h4"
         >
           Filter by year
         </Typography>

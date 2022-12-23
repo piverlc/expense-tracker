@@ -4,29 +4,24 @@ import { Fragment } from "react";
 import { ThemeModeToggle } from "./common/theme/ThemeModeToggle";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-import { useAppDispatch, useAppSelector } from "./redux/app/hooks";
-import {
-  selectExpenses,
-  setExpenses,
-} from "./redux/features/expenses/expensesSlice";
+import { useBearStore } from "./state";
 import { ExpensesDataTypeI } from "./types";
 
 const App = () => {
-  const expenses = useAppSelector(selectExpenses);
-  const dispatch = useAppDispatch();
+  const expenses = useBearStore((state) => state.expenses);
+  const setExpenses = useBearStore((state) => state.setExpenses);
 
   const addExpenseHandler = (expense: ExpensesDataTypeI) => {
-    dispatch(setExpenses(expense));
+    setExpenses(expense);
   };
-
   return (
     <Fragment>
       <CssVarsProvider>
         <Sheet>
           <ThemeModeToggle />
+          <NewExpense onAddExpense={addExpenseHandler} />
+          <Expenses items={expenses} />
         </Sheet>
-        <NewExpense onAddExpense={addExpenseHandler} />
-        <Expenses items={expenses} />
       </CssVarsProvider>
     </Fragment>
   );
